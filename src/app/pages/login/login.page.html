@@ -1,9 +1,46 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title style="text-align: center;">Bienvenido</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <div class="ion-text-center">
+        <h6 style="font-size: small;">Inicia sesión con tu usuario y contraseña.</h6>
+        <img src="../../assets/imagenes/logo.png" width="40%" alt="">
+    </div>
 
+    <form [formGroup]="formularioLogin">
+        <ion-item>
+            <ion-label position="floating">Nombre del Padre
+                <ion-text color="primary">*</ion-text>
+            </ion-label>
+            <ion-input required formControlName="nombreP" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Nombre del Hijo
+                <ion-text color="primary">*</ion-text>
+            </ion-label>
+            <ion-input required formControlName="nombreH" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Usuario
+                <ion-text color="primary">*</ion-text>
+            </ion-label>
+            <ion-input required formControlName="usuario" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Contraseña
+                <ion-text color="primary">*</ion-text>
+            </ion-label>
+            <ion-input required formControlName="password" type="password"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button style="display: block;" color="primary" type="submit">
+            Login
+        </ion-button>
+    </form>
+    <ion-button style="display: block;" color="medium" type="submit">
+        <ion-text style="color: rgb(20, 20, 119);">Registrarse</ion-text>
+    </ion-button>
 </ion-content>
