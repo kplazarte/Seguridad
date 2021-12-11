@@ -14,7 +14,19 @@ const routes: Routes = [
   {
     path: 'registrar',
     loadChildren: () => import('./pages/registrar/registrar.module').then( m => m.RegistrarPageModule)
+  },  {
+    path: 'menu-perfiles',
+    loadChildren: () => import('./pages/menu-perfiles/menu-perfiles.module').then( m => m.MenuPerfilesPageModule)
   },
+  {
+    path: 'menu-hijo',
+    loadChildren: () => import('./pages/menu-hijo/menu-hijo.module').then( m => m.MenuHijoPageModule)
+  },
+  {
+    path: 'menu-jugar',
+    loadChildren: () => import('./pages/menu-jugar/menu-jugar.module').then( m => m.MenuJugarPageModule)
+  },
+
 ];
 
 @NgModule({
