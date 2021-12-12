@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Niveles</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item *ngFor="let levels of list">
+
+            <div *ngIf="levels.estado=='init'; then thenBlock else elseBlock"></div>
+
+            <ng-template #thenBlock>
+                <ion-label size="small">{{levels.title}}</ion-label>
+                <circle-progress [percent]=levels.progress [radius]="38" [outerStrokeWidth]="8" [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"></circle-progress>
+            </ng-template>
+            <ng-template #elseBlock>
+
+                <ion-label size="small" class="noin">{{levels.title}}</ion-label>
+                <!-- <circle-progress [percent]=0 [radius]="38" [outerStrokeWidth]="8" [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"></circle-progress> -->
+            </ng-template>
+
+
+
+        </ion-item>
+    </ion-list>
+</ion-content>
