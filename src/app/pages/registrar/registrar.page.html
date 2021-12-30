@@ -18,7 +18,7 @@
             <ion-row>
                 <ion-col size="12">
                     <ion-item>
-                        <ion-label position="floating">Nombre del Padre
+                        <ion-label position="floating">Nombre del Representante
                             <ion-text color="primary">*</ion-text>
                         </ion-label>
                         <ion-input required formControlName="nombreP" type="text"></ion-input>
@@ -30,6 +30,23 @@
                             <ion-text color="primary">*</ion-text>
                         </ion-label>
                         <ion-input required formControlName="nombreH" type="text"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="floating">Fecha de nacimiento
+                            <ion-text color="primary">*</ion-text>
+                        </ion-label>
+                        <ion-datetime placeholder="Seleccionar Fecha"></ion-datetime>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label>Género</ion-label>
+                        <ion-select placeholder="Seleccione uno">
+                            <ion-select-option value="f">Mujer</ion-select-option>
+                            <ion-select-option value="m">Hombre</ion-select-option>
+                        </ion-select>
                     </ion-item>
                 </ion-col>
                 <ion-col size="12">
