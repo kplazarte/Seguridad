@@ -5,7 +5,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'inicio',
     pathMatch: 'full'
   },
   {
@@ -15,14 +15,6 @@ const routes: Routes = [
   {
     path: 'registrar',
     loadChildren: () => import('./pages/registrar/registrar.module').then( m => m.RegistrarPageModule)
-  },
-  {
-    path: 'menu-perfiles',
-    loadChildren: () => import('./pages/menu-perfiles/menu-perfiles.module').then( m => m.MenuPerfilesPageModule)
-  },
-  {
-    path: 'menu-hijo',
-    loadChildren: () => import('./pages/menu-hijo/menu-hijo.module').then( m => m.MenuHijoPageModule)
   },
   {
     path: 'menu-jugar',
@@ -39,7 +31,8 @@ const routes: Routes = [
   {
     path: 'modal-popover',
     loadChildren: () => import('./componentes/modal-popover/modal-popover.module').then( m => m.ModalPopoverPageModule)
-  },  {
+  },
+  {
     path: 'escritura',
     loadChildren: () => import('./pages/escritura/escritura.module').then( m => m.EscrituraPageModule)
   },
@@ -62,6 +55,10 @@ const routes: Routes = [
   {
     path: 'niv-repasar',
     loadChildren: () => import('./pages/niv-repasar/niv-repasar.module').then( m => m.NivRepasarPageModule)
+  },
+  {
+    path: 'inicio',
+    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
   },
 
 
