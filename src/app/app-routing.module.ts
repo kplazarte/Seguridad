@@ -49,10 +49,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/niv-write/niv-write.module').then( m => m.NivWritePageModule)
   },
   {
-    path: 'niv-pron',
-    loadChildren: () => import('./pages/niv-pron/niv-pron.module').then( m => m.NivPronPageModule)
-  },
-  {
     path: 'niv-repasar',
     loadChildren: () => import('./pages/niv-repasar/niv-repasar.module').then( m => m.NivRepasarPageModule)
   },

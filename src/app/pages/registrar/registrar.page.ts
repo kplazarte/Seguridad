@@ -6,6 +6,7 @@ import {  FormGroup,
   FormBuilder} from '@angular/forms';
 import { ConexionService } from 'src/app/services/conexion.service';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-registrar',
   templateUrl: './registrar.page.html',
@@ -14,8 +15,13 @@ import { AlertController } from '@ionic/angular';
 export class RegistrarPage implements OnInit {
   isSubmitted = false;
   formularioRegistrar: FormGroup;
-
-  constructor(public fb: FormBuilder,public conexionService: ConexionService,public alertController: AlertController) {
+  usuarioE: boolean;
+  usuarios: any;
+  public usuarioEncontrado;
+  constructor(public fb: FormBuilder,
+              public conexionService: ConexionService,
+              public alertController: AlertController,
+              private router: Router) {
 
    }
 
@@ -37,14 +43,20 @@ export class RegistrarPage implements OnInit {
     this.isSubmitted = true;
     if (!this.formularioRegistrar.valid) {
       this.presentAlert('Ingrese los datos correctamente');
-      console.log('All fields are required.');
       return false;
     } else {
-      this.formularioRegistrar.value.fechaN = format(new Date(this.formularioRegistrar.value.fechaN), 'yyyy-MM-dd');
-      this.conexionService.createUser(this.formularioRegistrar.value);
-      this.presentAlert('Registro Exitoso');
-
+      this.conexionService.getUsers(this.formularioRegistrar.value.usuario,(status)=>{
+        if (status) {
+          this.presentAlert('El usuario ya existe');
+        } else {
+          this.formularioRegistrar.value.fechaN = format(new Date(this.formularioRegistrar.value.fechaN), 'yyyy-MM-dd');
+          this.conexionService.createUser(this.formularioRegistrar.value);
+          this.presentAlert('Registro Exitoso');
+          //this.router.navigate(['/login']);
+        }
+      });
     }
+
   }
   async presentAlert(msg) {
     const alert = await this.alertController.create({
