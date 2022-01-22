@@ -52,7 +52,7 @@ export class RegistrarPage implements OnInit {
           this.formularioRegistrar.value.fechaN = format(new Date(this.formularioRegistrar.value.fechaN), 'yyyy-MM-dd');
           this.conexionService.createUser(this.formularioRegistrar.value);
           this.presentAlert('Registro Exitoso');
-          //this.router.navigate(['/login']);
+          this.router.navigate(['/login']);
         }
       });
     }

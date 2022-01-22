@@ -1,9 +1,40 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>niv-write</ion-title>
+    <ion-title style="text-align: center;">Escribir</ion-title>
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div style="padding: 10px; float: left; width: 45%; text-align: center;">
+    <img routerLink="/menu-jugar" src="../../assets/imagenes/escribir.png" width="60%" alt="">
+  </div>
+  <div style="padding: 10px; float: right; width: 45%; text-align: left;">
+    <h3>
+      Nivel 1
+    </h3> 
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div style="text-align: center;"> ESCRIBA EL NOMBRE DE LA IMAGEN </div>
+  <br>
+  <br>
+  <br>
+  <img routerLink="/menu-jugar" src="../../assets/imagenes/escribir.png" width="60%"  style="margin-left: 55px;" alt="">
+  <br>
+  <br>
+  <br>
+  <ion-item>
+    <ion-label position="floating">Respuesta</ion-label>
+    <ion-input></ion-input>
+    
+  </ion-item>
+  <br>
+  <br>
+  <ion-button (click)="presentAlert()" style="margin-left: 90px;">Comprobar</ion-button>
 </ion-content>
