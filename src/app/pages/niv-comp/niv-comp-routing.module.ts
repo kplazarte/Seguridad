@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { NivPronPage } from './niv-pron.page';
+import { NivCompPage } from './niv-comp.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: NivPronPage
+    component: NivCompPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class NivPronPageRoutingModule {}
+export class NivCompPageRoutingModule {}

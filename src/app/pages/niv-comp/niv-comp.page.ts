@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-niv-leer',
-  templateUrl: './niv-leer.page.html',
-  styleUrls: ['./niv-leer.page.scss'],
+  selector: 'app-niv-comp',
+  templateUrl: './niv-comp.page.html',
+  styleUrls: ['./niv-comp.page.scss'],
 })
-export class NivLeerPage implements OnInit {
+export class NivCompPage implements OnInit {
 
   constructor(public alertController: AlertController) { }
 
@@ -22,6 +22,7 @@ export class NivLeerPage implements OnInit {
     const { role } = await alert.onDidDismiss();
     console.log('onDidDismiss resolved with role', role);
   }
+
   ngOnInit() {
   }
 
