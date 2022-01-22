@@ -15,9 +15,7 @@ import { Router } from '@angular/router';
 export class RegistrarPage implements OnInit {
   isSubmitted = false;
   formularioRegistrar: FormGroup;
-  usuarioE: boolean;
-  usuarios: any;
-  public usuarioEncontrado;
+
   constructor(public fb: FormBuilder,
               public conexionService: ConexionService,
               public alertController: AlertController,
@@ -52,7 +50,7 @@ export class RegistrarPage implements OnInit {
           this.formularioRegistrar.value.fechaN = format(new Date(this.formularioRegistrar.value.fechaN), 'yyyy-MM-dd');
           this.conexionService.createUser(this.formularioRegistrar.value);
           this.presentAlert('Registro Exitoso');
-          //this.router.navigate(['/login']);
+          this.router.navigate(['/login']);
         }
       });
     }

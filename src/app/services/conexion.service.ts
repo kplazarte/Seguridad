@@ -40,4 +40,19 @@ export class ConexionService {
     },
     (error)=>console.log(error.message));
   }
+  logearse(usuario,callback){
+    this.obtenerDatos()
+    .subscribe(
+      (data)=>{
+        this.usuarios = data;
+        this.productoEncontrado = this.usuarios.find(user=>user.usuario === usuario.usuario && user.password === usuario.password );
+        if (this.productoEncontrado) {
+          callback(true);
+        } else{
+          callback(false);
+        }
+      },
+      (error)=>console.log(error)
+    );
+  }
 }
