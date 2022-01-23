@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { NivPronPageRoutingModule } from './niv-pron-routing.module';
+import { NivCompPageRoutingModule } from './niv-comp-routing.module';
 
-import { NivPronPage } from './niv-pron.page';
+import { NivCompPage } from './niv-comp.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NivPronPageRoutingModule
+    NivCompPageRoutingModule
   ],
-  declarations: [NivPronPage]
+  declarations: [NivCompPage]
 })
-export class NivPronPageModule {}
+export class NivCompPageModule {}

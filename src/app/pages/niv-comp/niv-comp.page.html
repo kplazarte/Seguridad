@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title style="text-align: center;">Leer</ion-title>
+    <ion-title style="text-align: center;">Comprender</ion-title>
     <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -21,7 +21,11 @@
   <br>
   <br>
   <br>
-  <div style="text-align: center;"> TEXTO A LEER </div>
+  <div style="text-align: center;"> 
+      <audio controls>
+        <source src="../../assets/music/cancion.mp3" type="audio/mpeg">
+      </audio> 
+</div>
   <br>
   <br>
   <br>
@@ -45,5 +49,5 @@
   <br>
   <br>
   <br>
-  <ion-button (click)=" presentAlert()" style="margin-left: 70px;">Comprobar</ion-button>
+  <ion-button (click)="presentAlert()" style="margin-left: 70px;">Comprobar</ion-button>
 </ion-content>

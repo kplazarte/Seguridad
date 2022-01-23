@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-niv-write',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NivWritePage implements OnInit {
 
-  constructor() { }
+  constructor(public alertController: AlertController) { }
 
-  ngOnInit() {
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      message: 'FELICITACIONES',
+      buttons: ['Aceptar']
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
+
+  
+  ngOnInit(): void {
   }
 
 }

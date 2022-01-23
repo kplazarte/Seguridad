@@ -3,25 +3,55 @@ import {  FormGroup,
     FormControl,
     Validators,
     FormBuilder} from '@angular/forms';
+import { ConexionService } from 'src/app/services/conexion.service';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  isSubmitted = false;
   formularioLogin: FormGroup;
 
-  constructor(public fb: FormBuilder) {
+  constructor(public fb: FormBuilder,public conexionService: ConexionService,public alertController: AlertController) {
     this.formularioLogin = this.fb.group({
-      nombreP: new FormControl('',Validators.required),
-      nombreH: new FormControl('',Validators.required),
-      usuario: new FormControl('',Validators.required),
+      usuario: new FormControl('',[Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
       password: new FormControl('',Validators.required)
     });
    }
 
+   get errorControl() {
+    return this.formularioLogin.controls;
+  }
+
   ngOnInit() {
+  }
+
+
+  onSubmit() {
+    this.isSubmitted = true;
+    this.conexionService.logearse(this.formularioLogin.value,(status)=>{
+      if (status) {
+
+      } else {
+        this.presentAlert('Usuario o Contraseña incorrectos');
+      }
+    });
+
+  }
+  async presentAlert(msg) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Aviso',
+      subHeader: msg,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
   }
 
 }
