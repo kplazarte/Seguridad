@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-niv-write',
@@ -8,7 +9,8 @@ import { AlertController } from '@ionic/angular';
 })
 export class NivWritePage implements OnInit {
 
-  constructor(public alertController: AlertController) { }
+  constructor(public alertController: AlertController,
+    private router: Router) { }
 
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -19,10 +21,23 @@ export class NivWritePage implements OnInit {
 
     await alert.present();
 
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
+    // GET INPUT VALIE
+    const value_write_one = (document.getElementById("value_write") as HTMLInputElement).value;
+    console.log("Value: ",value_write_one);
+
+    // REFRESH PAGES
+    this.router.navigate(['/niv-write']);
+
+    // CLEAR INPUT VALUE
+    const clear_value = (document.getElementById("value_write"))
+    clear_value.innerHTML = "";
+    
   }
 
+  // GET INPUT VALUES
+  // async getValueInput() {
+    
+  // }
   
   ngOnInit(): void {
   }
