@@ -1,53 +1,57 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title style="text-align: center;">Comprender</ion-title>
-    <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title style="text-align: center;">Comprender</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div style="padding: 10px; float: left; width: 45%; text-align: center;">
-    <img routerLink="/menu-jugar" src="../../assets/imagenes/leer.png" width="60%" alt="">
-  </div>
-  <div style="padding: 10px; float: right; width: 45%; text-align: left;">
-    <h3>
-      Nivel 1
-    </h3> 
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <div style="text-align: center;"> 
-      <audio controls>
-        <source src="../../assets/music/cancion.mp3" type="audio/mpeg">
-      </audio> 
-</div>
-  <br>
-  <br>
-  <br>
-  <div style="text-align: center;"> ¿ A QUÉ IMAGEN CORRESPONDE ?  </div>
-  <br>
-  <br>
-  <br>
-  <div id="uno">
-    <img style="margin-top: 20px;" routerLink="/menu-jugar" src="../../assets/imagenes/leer.png" width="100%" alt="">
-  </div>
-	<div id="dos">
-    <img style="margin-top: 20px;"  routerLink="/menu-jugar" src="../../assets/imagenes/leer.png" width="100%" alt="">
-  </div>
-	<br>
-	<div id="tres">
-    <img style="margin-top: 20px;"  routerLink="/menu-jugar" src="../../assets/imagenes/leer.png" width="100%" alt="">
-  </div>
-	<div id="cuatro">
-    <img style="margin-top: 20px;" routerLink="/menu-jugar" src="../../assets/imagenes/leer.png" width="100%" alt="">
-  </div>
-  <br>
-  <br>
-  <br>
-  <ion-button (click)="presentAlert()" style="margin-left: 70px;">Comprobar</ion-button>
+    <div style="padding: 10px; float: left; width: 45%; text-align: center;">
+        <img routerLink="/menu-jugar" src="../../assets/imagenes/leer.png" width="60%" alt="">
+    </div>
+    <div style="padding: 10px; float: right; width: 45%; text-align: left;">
+        <h3>
+            Nivel 1
+        </h3>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="text-align: center;">
+        <audio controls>
+        <source src="../../assets/QComprension/audio/Perro.aac" type="audio/mpeg">
+      </audio>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div style="text-align: center;"> ¿ A QUÉ IMAGEN CORRESPONDE ? </div>
+    <br>
+    <br>
+    <br>
+    <div id="uno">
+        <img style="margin-top: 20px;" src="../../assets/imagenes/leer.png" width="100%" alt="">
+        <input (click)="getValueInput()" type="radio" id="img_read1" name="drone" value="1">
+    </div>
+    <div id="dos">
+        <img style="margin-top: 20px;" src="../../assets/imagenes/leer.png" width="100%" alt="">
+        <input (click)="getValueInput2()" type="radio" id="img_read2" name="drone" value="2">
+    </div>
+    <br>
+    <div id="tres">
+        <img style="margin-top: 20px;" src="../../assets/imagenes/leer.png" width="100%" alt="">
+        <input (click)="getValueInput3()" type="radio" id="img_read3" name="drone" value="3">
+    </div>
+    <div id="cuatro">
+        <img style="margin-top: 20px;" src="../../assets/imagenes/leer.png" width="100%" alt="">
+        <input (click)="getValueInput4()" type="radio" id="img_read4" name="drone" value="4">
+    </div>
+    <br>
+    <br>
+    <br>
+    <ion-button (click)="presentAlert()" style="margin-left: 70px;">Comprobar</ion-button>
 </ion-content>
