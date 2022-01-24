@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { NoingresadoGuard } from './guards/noingresado.guard';
+import { IngresadoGuard } from './guards/ingresado.guard';
 
 
 const routes: Routes = [
@@ -10,11 +12,13 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
+    canActivate: [NoingresadoGuard]
   },
   {
     path: 'registrar',
-    loadChildren: () => import('./pages/registrar/registrar.module').then( m => m.RegistrarPageModule)
+    loadChildren: () => import('./pages/registrar/registrar.module').then( m => m.RegistrarPageModule),
+    canActivate: [NoingresadoGuard]
   },
   {
     path: 'menu-jugar',
@@ -58,7 +62,8 @@ const routes: Routes = [
   },
   {
     path: 'inicio',
-    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
+    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule),
+    canActivate: [IngresadoGuard]
   },
 
 
