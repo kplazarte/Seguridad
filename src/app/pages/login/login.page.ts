@@ -6,6 +6,7 @@ import {  FormGroup,
 import { ConexionService } from 'src/app/services/conexion.service';
 import { AlertController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -20,7 +21,8 @@ export class LoginPage implements OnInit {
     public conexionService: ConexionService,
     public alertController: AlertController,
     private navCtrl: NavController,
-    private storage: Storage
+    private storage: Storage,
+    private router: Router
     ) {
     this.formularioLogin = this.fb.group({
       usuario: new FormControl('',[Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
@@ -43,8 +45,8 @@ export class LoginPage implements OnInit {
     this.conexionService.logearse(this.formularioLogin.value,(status)=>{
       if (status) {
           localStorage.setItem('ingresado','true');
-          this.setData('logeado',{status,login: true});
-          this.navCtrl.navigateRoot('inicio');
+          localStorage.setItem('logeado',JSON.stringify(status));
+          this.router.navigate(['/inicio']);
       } else {
         this.presentAlert('Usuario o Contraseña incorrectos');
       }

@@ -12,7 +12,6 @@ export class IngresadoGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if (localStorage.getItem('ingresado')) {
-        console.log('ingresado');
         return true;
       }else{
         this.navCrtl.navigateRoot('login');

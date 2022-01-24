@@ -65,6 +65,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule),
     canActivate: [IngresadoGuard]
   },
+  {
+    path: 'salir',
+    loadChildren: () => import('./pages/salir/salir.module').then( m => m.SalirPageModule)
+  },
+
 
 
 
