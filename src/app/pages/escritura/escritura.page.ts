@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalPopoverPage } from '../../componentes/modal-popover/modal-popover.page';
 import { ModalController } from '@ionic/angular';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-escritura',
@@ -11,34 +12,27 @@ export class EscrituraPage implements OnInit {
 
   modelData: any;
   public list: Array<any>;
+  public long: Number;
+  public progress: number;
   constructor(
-              public modalController: ModalController) { }
+              public modalController: ModalController,
+              public dataservice: DataService) { }
   ngOnInit() {
-    this.list = [
-      {id:1,
-      title: 'Nivel 1', progress: '35',
-      aciertos:'15', fallos:'5' },
+    this.dataservice.obtenerUsuarioLogeado();
+    const id = this.dataservice.usuarioLoged.id_usuario;
+    this.dataservice.getProgresoByModo(id,2,(status)=>{
+      console.log(status);
+      this.list = status;
+      this.long = this.list.length;
+      //this.progress = this.list.
+    });
+  }
 
-      {id:2,
-      title: 'Nivel 2', progress: '15',
-      aciertos:'10', fallos:'10' },
-
-      {id:3,
-      title: 'Nivel 3', progress: '4',
-      aciertos:'0', fallos:'0',
-      },
-
-      {id:4,
-      title: 'Nivel 4', progress: '0',
-      aciertos:'0', fallos:'0',
-      },
-
-      {id:5,
-      title: 'Nivel 5', progress: '0',
-      aciertos:'0', fallos:'0',
-      }
-
-  ];
+  getProgress(id){
+    const resultado = this.list.find( level => level.id === id );
+    this.progress = ((resultado.aciertos + resultado.fallos)/10)*100;
+    //this.progress = ((resultado.aciertos + resultado.fallos));
+    return this.progress;
   }
 
 

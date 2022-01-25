@@ -1,18 +1,37 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Progreso Pronunciación</ion-title>
+        <ion-title>Progreso Comprensión</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-list>
-        <ion-item *ngFor="let levels of list">
+    <div *ngIf="long>0; then thenBlock else elseBlock"></div>
 
-            <ion-label size="small" (click)="openIonModal(levels.id)">{{levels.title}}</ion-label>
-            <div>
-                <circle-progress [percent]=levels.progress [radius]="38" [outerStrokeWidth]="8" [innerStrokeWidth]="3" [outerStrokeColor]="'#FF5733'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"></circle-progress>
-            </div>
+    <ng-template #thenBlock>
+        <ion-list>
 
-        </ion-item>
-    </ion-list>
+            <ion-item *ngFor="let levels of list">
+
+                <ion-label size="small" (click)="openIonModal(levels.id)">{{levels.title}}</ion-label>
+                <div>
+                    <circle-progress [percent]=getProgress(levels.id) [radius]="38" [outerStrokeWidth]="8" [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"></circle-progress>
+                </div>
+            </ion-item>
+        </ion-list>
+
+    </ng-template>
+
+    <ng-template #elseBlock>
+
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>No hay datos por mostrar</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+                El jugador aún no ha empezado ningún nivel de <b>Comprensión</b>
+            </ion-card-content>
+        </ion-card>
+
+    </ng-template>
 </ion-content>

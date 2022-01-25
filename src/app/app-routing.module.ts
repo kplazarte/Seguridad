@@ -74,7 +74,16 @@ const routes: Routes = [
   {
     path: 'menu-repasar',
     loadChildren: () => import('./pages/menu-repasar/menu-repasar.module').then( m => m.MenuRepasarPageModule)
+  },  {
+    path: 'niv-repasar-es',
+    loadChildren: () => import('./pages/niv-repasar-es/niv-repasar-es.module').then( m => m.NivRepasarEsPageModule)
   },
+  {
+    path: 'niv-repasar-com',
+    loadChildren: () => import('./pages/niv-repasar-com/niv-repasar-com.module').then( m => m.NivRepasarComPageModule)
+  }
+
+
 
 
 

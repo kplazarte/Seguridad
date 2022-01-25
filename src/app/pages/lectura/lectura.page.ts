@@ -13,6 +13,8 @@ export class LecturaPage implements OnInit {
 
   modelData: any;
   public list: Array<any>;
+  public long: Number;
+  public progress: number;
 
   constructor(
               public modalController: ModalController,
@@ -21,16 +23,21 @@ export class LecturaPage implements OnInit {
   ngOnInit() {
     this.dataservice.obtenerUsuarioLogeado();
     const id = this.dataservice.usuarioLoged.id_usuario;
-    this.dataservice.getProgresoByLectura(1,1,(status)=>{
+    this.dataservice.getProgresoByModo(id,1,(status)=>{
       console.log(status);
       this.list = status;
+      this.long = this.list.length;
+      //this.progress = this.list.
     });
   }
-/*   this.list = [
-    {id:1,
-    title: 'Nivel 1', progress: '50',
-    aciertos:'18', fallos:'2' }
-]; */
+
+
+getProgress(id){
+  const resultado = this.list.find( level => level.id === id );
+  this.progress = ((resultado.fallos+resultado.aciertos)/10)*100;
+  //this.progress = ((resultado.fallos+resultado.aciertos));
+  return this.progress;
+}
 
   async openIonModal(id) {
     const resultado = this.list.find( level => level.id === id );

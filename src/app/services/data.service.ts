@@ -14,7 +14,7 @@ export class DataService {
     this.usuarioLoged = JSON.parse(localStorage.getItem('logeado'));
   }
 
-  getProgresoByLectura(id,modo,callback){
+  getProgresoByModo(id,modo,callback){
     this.http.get(`http://localhost:3000/niveles/${id}/${modo}`).subscribe(
       (data)=>{
         callback(data);

@@ -39,10 +39,6 @@ export class NivRepasarPage implements OnInit {
 
   ];
 
-
-
-
-
   }
 
 }
