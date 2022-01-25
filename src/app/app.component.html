@@ -15,10 +15,16 @@
                                 Inicio
                             </ion-label>
                         </ion-item>
-                        <ion-item [routerDirection]="'root'" [routerLink]="'/login'">
+                        <ion-item [routerDirection]="'root'" [routerLink]="'/progreso/read'">
                             <ion-icon slot="start" [name]="'Login'"></ion-icon>
                             <ion-label>
-                                Iniciar Sesión
+                                Ver progreso
+                            </ion-label>
+                        </ion-item>
+                        <ion-item [routerDirection]="'root'" [routerLink]="'/salir'">
+                            <ion-icon slot="start" [name]="'Login'"></ion-icon>
+                            <ion-label>
+                                Cerrar Sesión
                             </ion-label>
                         </ion-item>
                     </ion-menu-toggle>
