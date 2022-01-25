@@ -15,29 +15,28 @@ export class NivWritePage implements OnInit {
   async presentAlert() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      message: 'FELICITACIONES',
+      message: 'CORRECTO FELICITACIONES',
       buttons: ['Aceptar']
     });
-
-    await alert.present();
+    const alert2 = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      message: 'INCORRECTO SIGUE INTENTANDO',
+      buttons: ['Aceptar']
+    });
 
     // GET INPUT VALIE
     const value_write_one = (document.getElementById("value_write") as HTMLInputElement).value;
     console.log("Value: ",value_write_one);
 
-    // REFRESH PAGES
-    this.router.navigate(['/niv-write']);
-
-    // CLEAR INPUT VALUE
-    const clear_value = (document.getElementById("value_write"))
-    clear_value.innerHTML = "";
-    
+    if (value_write_one == 'carro' || value_write_one == 'Carro' || value_write_one == 'CARRO') {
+      await alert.present();
+    } else {
+      await alert2.present();
+    }
+     // CLEAR INPUT VALUE
+     (document.getElementById("value_write") as HTMLInputElement).value = "";
+       
   }
-
-  // GET INPUT VALUES
-  // async getValueInput() {
-    
-  // }
   
   ngOnInit(): void {
   }
