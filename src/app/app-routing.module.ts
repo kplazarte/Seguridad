@@ -70,6 +70,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/salir/salir.module').then( m => m.SalirPageModule)
   },
 
+  {
+    path: 'menu-repasar',
+    loadChildren: () => import('./pages/menu-repasar/menu-repasar.module').then( m => m.MenuRepasarPageModule)
+  },
+
+
 
 
 
