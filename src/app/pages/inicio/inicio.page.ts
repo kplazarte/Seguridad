@@ -11,11 +11,10 @@ export class InicioPage implements OnInit {
 
   usuario: any;
 
-  constructor(private menu: MenuController,private storage: Storage,private userloged: DataService) { }
+  constructor(private menu: MenuController,private storage: Storage,public dataservice: DataService) { }
 
   ngOnInit() {
-    const usuario = this.userloged.obtenerUsuarioLogeado();
-    this.usuario = usuario;
+    this.dataservice.obtenerUsuarioLogeado();
   }
   doRefresh(event) {
     console.log('Begin async operation');

@@ -1,6 +1,7 @@
 import { ModalPopoverPage } from '../../componentes/modal-popover/modal-popover.page';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { DataService } from '../../services/data.service';
 
 
 @Component({
@@ -12,36 +13,24 @@ export class LecturaPage implements OnInit {
 
   modelData: any;
   public list: Array<any>;
+
   constructor(
-              public modalController: ModalController) { }
+              public modalController: ModalController,
+              public dataservice: DataService) {
+               }
   ngOnInit() {
-    this.list = [
-      {id:1,
-      title: 'Nivel 1', progress: '50',
-      aciertos:'18', fallos:'2' },
-
-      {id:2,
-      title: 'Nivel 2', progress: '50',
-      aciertos:'15', fallos:'5' },
-
-      {id:3,
-      title: 'Nivel 3', progress: '0',
-      aciertos:'0', fallos:'0',
-      },
-
-      {id:4,
-      title: 'Nivel 4', progress: '0',
-      aciertos:'0', fallos:'0',
-      },
-
-      {id:5,
-      title: 'Nivel 5', progress: '0',
-      aciertos:'0', fallos:'0',
-      }
-
-  ];
+    this.dataservice.obtenerUsuarioLogeado();
+    const id = this.dataservice.usuarioLoged.id_usuario;
+    this.dataservice.getProgresoByLectura(1,1,(status)=>{
+      console.log(status);
+      this.list = status;
+    });
   }
-
+/*   this.list = [
+    {id:1,
+    title: 'Nivel 1', progress: '50',
+    aciertos:'18', fallos:'2' }
+]; */
 
   async openIonModal(id) {
     const resultado = this.list.find( level => level.id === id );

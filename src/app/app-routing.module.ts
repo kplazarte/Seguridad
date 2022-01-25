@@ -67,7 +67,8 @@ const routes: Routes = [
   },
   {
     path: 'salir',
-    loadChildren: () => import('./pages/salir/salir.module').then( m => m.SalirPageModule)
+    loadChildren: () => import('./pages/salir/salir.module').then( m => m.SalirPageModule),
+    canActivate: [IngresadoGuard]
   },
 
 
