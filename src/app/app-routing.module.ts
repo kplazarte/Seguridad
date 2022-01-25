@@ -71,6 +71,12 @@ const routes: Routes = [
     canActivate: [IngresadoGuard]
   },
 
+  {
+    path: 'menu-repasar',
+    loadChildren: () => import('./pages/menu-repasar/menu-repasar.module').then( m => m.MenuRepasarPageModule)
+  },
+
+
 
 
 
