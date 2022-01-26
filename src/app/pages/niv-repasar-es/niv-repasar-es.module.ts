@@ -7,13 +7,23 @@ import { IonicModule } from '@ionic/angular';
 import { NivRepasarEsPageRoutingModule } from './niv-repasar-es-routing.module';
 
 import { NivRepasarEsPage } from './niv-repasar-es.page';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NivRepasarEsPageRoutingModule
+    NivRepasarEsPageRoutingModule,
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 50,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#C7E596",
+      animationDuration: 300
+    })
   ],
   declarations: [NivRepasarEsPage]
 })

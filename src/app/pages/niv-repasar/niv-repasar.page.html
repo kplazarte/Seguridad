@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Niveles</ion-title>
+        <ion-title>Niveles Lectura</ion-title>
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
@@ -8,23 +8,33 @@
 </ion-header>
 
 <ion-content>
-    <ion-list>
-        <ion-item *ngFor="let levels of list">
+    <div *ngIf="long>0; then thenBlock else elseBlock"></div>
 
-            <div *ngIf="levels.estado=='init'; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+        <ion-list>
 
-            <ng-template #thenBlock>
+            <ion-item *ngFor="let levels of list">
+
                 <ion-label size="small">{{levels.title}}</ion-label>
-                <circle-progress [percent]=levels.progress [radius]="38" [outerStrokeWidth]="8" [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"></circle-progress>
-            </ng-template>
-            <ng-template #elseBlock>
+                <div>
+                    <circle-progress [percent]=getProgress(levels.id) [radius]="38" [outerStrokeWidth]="8" [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"></circle-progress>
+                </div>
+            </ion-item>
+        </ion-list>
 
-                <ion-label size="small" class="noin">{{levels.title}}</ion-label>
-                <!-- <circle-progress [percent]=0 [radius]="38" [outerStrokeWidth]="8" [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"></circle-progress> -->
-            </ng-template>
+    </ng-template>
 
+    <ng-template #elseBlock>
 
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>Necesitas Practicar</ion-card-title>
+            </ion-card-header>
 
-        </ion-item>
-    </ion-list>
+            <ion-card-content>
+                Aún no has empezado ningún Nivel
+            </ion-card-content>
+        </ion-card>
+
+    </ng-template>
 </ion-content>
