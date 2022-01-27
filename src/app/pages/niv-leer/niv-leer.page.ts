@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-niv-leer',
@@ -8,7 +9,10 @@ import { AlertController } from '@ionic/angular';
 })
 export class NivLeerPage implements OnInit {
 
-  constructor(public alertController: AlertController) { }
+  id:any;
+
+  constructor(public alertController: AlertController,
+    private route: ActivatedRoute) { }
 
   async presentAlert() {
     const value_one = (document.getElementById("img_read1") as HTMLInputElement).value;
@@ -62,6 +66,8 @@ export class NivLeerPage implements OnInit {
     console.log("Value: ",value_four);
   }
   ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    console.log("id",this.id);
   }
 
 }

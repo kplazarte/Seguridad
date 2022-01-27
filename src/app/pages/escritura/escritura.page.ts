@@ -24,7 +24,6 @@ export class EscrituraPage implements OnInit {
       console.log(status);
       this.list = status;
       this.long = this.list.length;
-      //this.progress = this.list.
     });
   }
 

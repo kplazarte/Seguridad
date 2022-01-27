@@ -22,4 +22,14 @@ export class DataService {
       (error)=>console.log(error.message)
     );
   }
+
+  obtenerNiveles(callback){
+    this.http.get(`http://localhost:3000/niveles`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
 }

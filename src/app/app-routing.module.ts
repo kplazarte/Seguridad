@@ -49,6 +49,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/niv-leer/niv-leer.module').then( m => m.NivLeerPageModule)
   },
   {
+    path: 'niv-leer/:id',
+    loadChildren: () => import('./pages/niv-leer/niv-leer.module').then( m => m.NivLeerPageModule)
+  },
+  {
     path: 'niv-write',
     loadChildren: () => import('./pages/niv-write/niv-write.module').then( m => m.NivWritePageModule)
   },
@@ -74,14 +78,27 @@ const routes: Routes = [
   {
     path: 'menu-repasar',
     loadChildren: () => import('./pages/menu-repasar/menu-repasar.module').then( m => m.MenuRepasarPageModule)
-  },  {
+  },
+  {
     path: 'niv-repasar-es',
     loadChildren: () => import('./pages/niv-repasar-es/niv-repasar-es.module').then( m => m.NivRepasarEsPageModule)
   },
   {
     path: 'niv-repasar-com',
     loadChildren: () => import('./pages/niv-repasar-com/niv-repasar-com.module').then( m => m.NivRepasarComPageModule)
+  },
+  {
+    path: 'lista-niveles',
+    loadChildren: () => import('./pages/lista-niveles/lista-niveles.module').then( m => m.ListaNivelesPageModule)
+  },  {
+    path: 'lista-niveles2',
+    loadChildren: () => import('./pages/lista-niveles2/lista-niveles2.module').then( m => m.ListaNiveles2PageModule)
+  },
+  {
+    path: 'lista-niveles3',
+    loadChildren: () => import('./pages/lista-niveles3/lista-niveles3.module').then( m => m.ListaNiveles3PageModule)
   }
+
 
 
 
