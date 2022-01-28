@@ -32,4 +32,44 @@ export class DataService {
     );
   }
 
+  getReadLevelList(id,nivel,callback){
+
+    this.http.get(`http://localhost:3000/questions/read/${id}/${nivel}`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
+  getWriteLevelList(id,nivel,callback){
+
+    this.http.get(`http://localhost:3000/questions/write/${id}/${nivel}`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
+  getCompLevelList(id,nivel,callback){
+
+    this.http.get(`http://localhost:3000/questions/comp/${id}/${nivel}`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
+  getAnsweredLevelList(id,nivel,callback){
+
+    this.http.get(`http://localhost:3000/answered/read/${id}/${nivel}`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
 }

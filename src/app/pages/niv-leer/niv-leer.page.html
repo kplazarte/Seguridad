@@ -21,29 +21,28 @@
     <br>
     <br>
     <br>
-    <div style="text-align: center;"> TEXTO A LEER </div>
+    <div style="text-align: center;"> ¿ QUÉ IMAGEN ES ? </div>
     <br>
     <br>
-    <br>
-    <div style="text-align: center;"> ¿ A QUÉ IMAGEN CORRESPONDE ? </div>
-    <br>
-    <br>
+    <div style="text-align: center;">
+        <h4><b>{{palabra}}</b></h4>
+    </div>
     <br>
     <div id="uno">
-        <img style="margin-top: 20px;" src="../../assets/QEscribir/casa.png" width="100%" alt="">
+        <img style="margin-top: 20px;" [src]=img1 width="100%" alt="">
         <input (click)="getValueInput()" type="radio" id="img_read1" name="drone" value="1">
     </div>
     <div id="dos">
-        <img style="margin-top: 20px;" src="../../assets/imagenes/leer.png" width="100%" alt="">
+        <img style="margin-top: 20px;" [src]=img2 width="122px" height="126px" alt="">
         <input (click)="getValueInput2()" type="radio" id="img_read2" name="drone" value="2">
     </div>
     <br>
     <div id="tres">
-        <img style="margin-top: 20px;" src="../../assets/imagenes/leer.png" width="100%" alt="">
+        <img style="margin-top: 20px;" [src]=img3 width="122px" height="126px" alt="">
         <input (click)="getValueInput3()" type="radio" id="img_read3" name="drone" value="3">
     </div>
     <div id="cuatro">
-        <img style="margin-top: 20px;" src="../../assets/imagenes/leer.png" width="100%" alt="">
+        <img style="margin-top: 20px;" [src]=img4 width="122px" height="126px" alt="">
         <input (click)="getValueInput4()" type="radio" id="img_read4" name="drone" value="4">
     </div>
     <br>

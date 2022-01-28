@@ -57,7 +57,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/niv-write/niv-write.module').then( m => m.NivWritePageModule)
   },
   {
+    path: 'niv-write/:id',
+    loadChildren: () => import('./pages/niv-write/niv-write.module').then( m => m.NivWritePageModule)
+  },
+  {
     path: 'niv-comp',
+    loadChildren: () => import('./pages/niv-comp/niv-comp.module').then( m => m.NivCompPageModule)
+  },
+  {
+    path: 'niv-comp/:id',
     loadChildren: () => import('./pages/niv-comp/niv-comp.module').then( m => m.NivCompPageModule)
   },
   {
@@ -90,7 +98,8 @@ const routes: Routes = [
   {
     path: 'lista-niveles',
     loadChildren: () => import('./pages/lista-niveles/lista-niveles.module').then( m => m.ListaNivelesPageModule)
-  },  {
+  },
+  {
     path: 'lista-niveles2',
     loadChildren: () => import('./pages/lista-niveles2/lista-niveles2.module').then( m => m.ListaNiveles2PageModule)
   },
