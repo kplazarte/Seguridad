@@ -14,6 +14,8 @@ export class ListaNivelesPage implements OnInit {
   public progress:number;
   public iniciado: Array<any>=[];
   public id_modo:any;
+  asd:any;
+
   constructor(public dataservice: DataService,
     public alertController: AlertController,
     private route: ActivatedRoute) { }
@@ -25,31 +27,29 @@ export class ListaNivelesPage implements OnInit {
     const id = this.dataservice.usuarioLoged.id_usuario;
     this.dataservice.obtenerNiveles((status)=>{
       this.list = status;
-      //console.log(this.list);
     });
     this.dataservice.getProgresoByModo(id,1,(status2)=>{
-      console.log(status2);
       this.list2 = status2;
-      for(let i=0;i<this.list2.length;i++){
+      for (let i = 0; i < this.list2.length; i++) {
         this.iniciado.unshift(this.list2[i].title);
       }
-      //console.log(this.iniciado);
+
 
     });
-
 
   }
 
   isInit(nivel){
-    const resp = this.iniciado.some(x => x=== nivel);
+    //console.log(this.iniciado);
+    const resp = this.iniciado.some(x =>x=== nivel );
     return resp;
   }
-
-
   getProgress(name){
+    //console.log(name);
       const resultado = this.list2.find( level => level.title === name );
       this.progress = (( resultado.fallos+resultado.aciertos )/10)*100;
-      //this.progress = ((resultado.aciertos + resultado.fallos)/10)*100;
+      //console.log(this.progress);
+      /* this.progress = ((resultado.aciertos + resultado.fallos)/10)*100; */
     return this.progress;
   }
 

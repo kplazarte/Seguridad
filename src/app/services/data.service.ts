@@ -72,4 +72,13 @@ export class DataService {
     );
   }
 
+  respuestaContestada(idU,nivel,acierto,error,idP,modo,callback){
+    this.http.get(`http://localhost:3000/questions/read/resp/${idU}/${nivel}/${acierto}/${error}/${idP}/${modo}`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
 }

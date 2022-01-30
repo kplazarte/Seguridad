@@ -12,9 +12,10 @@
 
         <ion-item *ngFor="let levels of list">
             <!-- <div *ngIf="getProgress(levels.id)>0; then thenBlock else elseBlock"></div> -->
-            <div *ngIf="isInit(levels.nivel); then thenBlock else elseBlock"></div>
 
+            <div *ngIf="isInit(levels.nivel); then thenBlock else elseBlock"></div>
             <ng-template #thenBlock>
+
                 <ion-label size="small" [routerLink]="['/niv-leer',levels.id_nivel]">{{levels.nivel}}</ion-label>
                 <div>
                     <circle-progress [percent]=getProgress(levels.nivel) [radius]="38" [outerStrokeWidth]="8" [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"></circle-progress>
@@ -33,13 +34,7 @@
                 <ng-template #op2>
                     <ion-label size="small" (click)="presentAlertButtons()">{{levels.nivel}}</ion-label>
                 </ng-template>
-
-
-
             </ng-template>
         </ion-item>
     </ion-list>
-
-
-
 </ion-content>
