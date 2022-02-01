@@ -54,19 +54,19 @@ export class RepasarCompPage implements OnInit {
 
       if(check_one == true && parseInt(value_one) == this.answer) {
         await alert.present();
-        //this.respCorrecta(this.idUser,this.id,1,0,this.id_pregunta,3);
+        this.cambiarLista();
       } else if (check_two == true && parseInt(value_two) == this.answer){
         await alert.present();
-        //this.respCorrecta(this.idUser,this.id,1,0,this.id_pregunta,3);
+        this.cambiarLista();
       } else if (check_tree == true && parseInt(value_tree) == this.answer) {
         await alert.present();
-        //this.respCorrecta(this.idUser,this.id,1,0,this.id_pregunta,3);
+        this.cambiarLista();
       } else if (check_four == true && parseInt(value_four) == this.answer) {
         await alert.present();
-        //this.respCorrecta(this.idUser,this.id,1,0,this.id_pregunta,3);
+        this.cambiarLista();
       } else {
         await alert2.present();
-        //this.respCorrecta(this.idUser,this.id,0,1,this.id_pregunta,3);
+        this.cambiarLista();
       }
     }
 
@@ -115,6 +115,7 @@ export class RepasarCompPage implements OnInit {
     }else{
       this.presentAlert2();
       this.reloadCurrentRoute();
+      this.transformar();
       //this.router.navigate(['/lista-niveles3/']);
     }
 
@@ -124,14 +125,12 @@ export class RepasarCompPage implements OnInit {
   async presentAlert2() {
     const alert2 = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: '',
-      message: 'Todas las preguntas ya fueron respondidas',
-      buttons: ['OK']
+      header: 'Terminaste con el repaso',
+      message: `<img src="../../../assets/imagenes/brain.gif" alt="g-maps" width="25%">`,
+      buttons: ['Entendido']
     });
 
     await alert2.present();
-
-
   }
 
   reloadCurrentRoute() {
@@ -140,6 +139,21 @@ export class RepasarCompPage implements OnInit {
         this.router.navigate([currentUrl]);
         console.log(currentUrl);
     });
+  }
+
+  cambiarLista(){
+    this.dataservice.updateComp(this.id_pregunta,(status)=>{
+      console.log(status);
+      this.ngOnInit();
+    });
+
+  }
+
+  transformar(){
+    this.dataservice.falseComp((status)=>{
+      console.log(status);
+    });
+
   }
 
 }

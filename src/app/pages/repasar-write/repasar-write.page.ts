@@ -41,11 +41,11 @@ export class RepasarWritePage implements OnInit {
       console.log("Value: ",value_write_one);
 
       if (value_write_one.toUpperCase() == this.answer.toUpperCase() || value_write_one.toUpperCase() == this.answer2.toUpperCase()) {
-        //this.respCorrecta(this.id_user,this.id,1,0,this.id_pregunta,2);
+        this.cambiarLista();
         await alert.present();
 
       } else {
-        //this.respCorrecta(this.id_user,this.id,0,1,this.id_pregunta,2);
+        this.cambiarLista();
         await alert2.present();
 
       }
@@ -69,10 +69,9 @@ export class RepasarWritePage implements OnInit {
       } else {
         this.presentAlert2();
         this.reloadCurrentRoute();
+        this.transformar();
         //this.router.navigate(['/lista-niveles2']);
       }
-
-
     });
   }
 
@@ -80,9 +79,9 @@ export class RepasarWritePage implements OnInit {
   async presentAlert2() {
     const alert2 = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Todas las preguntas de este nivel ya fueron respondidas',
-      message: `<img src="../../../assets/imagenes/trofeo.gif" alt="g-maps" width="25%">`,
-      buttons: ['OK']
+      header: 'Terminaste con el repaso',
+      message: `<img src="../../../assets/imagenes/brain.gif" alt="g-maps" width="25%">`,
+      buttons: ['Entendido']
     });
 
     await alert2.present();
@@ -94,6 +93,21 @@ export class RepasarWritePage implements OnInit {
         this.router.navigate([currentUrl]);
         console.log(currentUrl);
     });
+  }
+
+  cambiarLista(){
+    this.dataservice.updateWrite(this.id_pregunta,(status)=>{
+      console.log(status);
+      this.ngOnInit();
+    });
+
+  }
+
+  transformar(){
+    this.dataservice.falseWrite((status)=>{
+      console.log(status);
+    });
+
   }
 
 }

@@ -140,6 +140,7 @@ export class NivLeerPage implements OnInit {
 
   }
 
+
   insertCorrecta(idU,nivel,acierto,error,idP,modo){
 
     this.dataservice.respuestaContestada(idU,nivel,acierto,error,idP,modo,(status)=>{

@@ -106,11 +106,10 @@ export class InicioPage implements OnInit {
   async presentAlert3() {
     const alert2 = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: `Tienes 0 puntos`,
+      header: `Tienes ${this.totalaciertos} puntos`,
       message: `
       <ul>
       <li><h4> Ganas 5 puntos por cada pregunta contestada correctamente </h4></li>
-      <li><h4> Ganas 3 puntos por cada pregunta repasada </h4></li>
       </ul>
        `,
       buttons: ['Entendido']

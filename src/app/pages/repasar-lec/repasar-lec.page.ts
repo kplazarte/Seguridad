@@ -54,22 +54,22 @@ export class RepasarLecPage implements OnInit {
       });
 
       if(check_one == true && parseInt(value_one) == this.answer) {
-        //this.respCorrecta(this.idUser,this.id,1,0,this.id_pregunta,1);
+        this.cambiarLista();
         await alert.present();
 
       } else if (check_two == true && parseInt(value_two) == this.answer){
-        //this.respCorrecta(this.idUser,this.id,1,0,this.id_pregunta,1);
+        this.cambiarLista();
         await alert.present();
 
       } else if (check_tree == true && parseInt(value_tree) == this.answer) {
-        //this.respCorrecta(this.idUser,this.id,1,0,this.id_pregunta,1);
+        this.cambiarLista();
         await alert.present();
 
       } else if (check_four == true && parseInt(value_four) == this.answer) {
-        //this.respCorrecta(this.idUser,this.id,1,0,this.id_pregunta,1);
+        this.cambiarLista();
         await alert.present();
       } else {
-        //this.respCorrecta(this.idUser,this.id,0,1,this.id_pregunta,1);
+        this.cambiarLista();
         await alert2.present();
       }
 
@@ -122,6 +122,7 @@ export class RepasarLecPage implements OnInit {
         }else{
           this.presentAlert2();
           this.reloadCurrentRoute();
+          this.transformar();
         }
       });
   }
@@ -129,15 +130,12 @@ export class RepasarLecPage implements OnInit {
   async presentAlert2() {
     const alert2 = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: '',
-      message: 'Todas las preguntas ya fueron respondidas',
+      header: 'Terminaste con el repaso',
+      message: `<img src="../../../assets/imagenes/brain.gif" alt="g-maps" width="25%">`,
       buttons: ['OK']
-
     });
 
     await alert2.present();
-
-
   }
 
   reloadCurrentRoute() {
@@ -146,6 +144,22 @@ export class RepasarLecPage implements OnInit {
         this.router.navigate([currentUrl]);
         console.log(currentUrl);
     });
+  }
+
+
+  cambiarLista(){
+    this.dataservice.updateLeer(this.id_pregunta,(status)=>{
+      console.log(status);
+      this.ngOnInit();
+    });
+
+  }
+
+  transformar(){
+    this.dataservice.falseLeer((status)=>{
+      console.log(status);
+    });
+
   }
 
 }

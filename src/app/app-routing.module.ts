@@ -130,7 +130,11 @@ const routes: Routes = [
   {
     path: 'repasar-comp/:id',
     loadChildren: () => import('./pages/repasar-comp/repasar-comp.module').then( m => m.RepasarCompPageModule)
+  },  {
+    path: 'modal-highscore',
+    loadChildren: () => import('./componentes/modal-highscore/modal-highscore.module').then( m => m.ModalHighscorePageModule)
   }
+
 
 
 

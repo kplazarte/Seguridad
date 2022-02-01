@@ -6,6 +6,8 @@ import {HttpClient,HttpHeaders,HttpParams} from '@angular/common/http';
 export class DataService {
 
   usuarioLoged: any;
+  apiURL:string = "http://localhost:3000";
+  //apiURL:string ="https://api-edusmart.herokuapp.com"
 
   constructor(public http: HttpClient) {
   }
@@ -15,7 +17,7 @@ export class DataService {
   }
 
   getProgresoByModo(id,modo,callback){
-    this.http.get(`http://localhost:3000/niveles/${id}/${modo}`).subscribe(
+    this.http.get(`${this.apiURL}/niveles/${id}/${modo}`).subscribe(
       (data)=>{
         callback(data);
       },
@@ -24,7 +26,7 @@ export class DataService {
   }
 
   obtenerNiveles(callback){
-    this.http.get(`http://localhost:3000/niveles`).subscribe(
+    this.http.get(`${this.apiURL}/niveles`).subscribe(
       (data)=>{
         callback(data);
       },
@@ -34,7 +36,7 @@ export class DataService {
 
   getReadLevelList(id,nivel,callback){
 
-    this.http.get(`http://localhost:3000/questions/read/${id}/${nivel}`).subscribe(
+    this.http.get(`${this.apiURL}/questions/read/${id}/${nivel}`).subscribe(
       (data)=>{
         callback(data);
       },
@@ -44,7 +46,7 @@ export class DataService {
 
   getWriteLevelList(id,nivel,callback){
 
-    this.http.get(`http://localhost:3000/questions/write/${id}/${nivel}`).subscribe(
+    this.http.get(`${this.apiURL}/questions/write/${id}/${nivel}`).subscribe(
       (data)=>{
         callback(data);
       },
@@ -54,7 +56,7 @@ export class DataService {
 
   getCompLevelList(id,nivel,callback){
 
-    this.http.get(`http://localhost:3000/questions/comp/${id}/${nivel}`).subscribe(
+    this.http.get(`${this.apiURL}/questions/comp/${id}/${nivel}`).subscribe(
       (data)=>{
         callback(data);
       },
@@ -64,7 +66,7 @@ export class DataService {
 
   getAnsweredReadList(id,nivel,callback){
 
-    this.http.get(`http://localhost:3000/answered/read/${id}/${nivel}`).subscribe(
+    this.http.get(`${this.apiURL}/answered/read/${id}/${nivel}`).subscribe(
       (data)=>{
         callback(data);
       },
@@ -74,7 +76,7 @@ export class DataService {
 
   getAnsweredWriteList(id,nivel,callback){
 
-    this.http.get(`http://localhost:3000/answered/write/${id}/${nivel}`).subscribe(
+    this.http.get(`${this.apiURL}/answered/write/${id}/${nivel}`).subscribe(
       (data)=>{
         callback(data);
       },
@@ -84,7 +86,7 @@ export class DataService {
 
   getAnsweredCompList(id,nivel,callback){
 
-    this.http.get(`http://localhost:3000/answered/comp/${id}/${nivel}`).subscribe(
+    this.http.get(`${this.apiURL}/answered/comp/${id}/${nivel}`).subscribe(
       (data)=>{
         callback(data);
       },
@@ -93,7 +95,61 @@ export class DataService {
   }
 
   respuestaContestada(idU,nivel,acierto,error,idP,modo,callback){
-    this.http.get(`http://localhost:3000/questions/read/resp/${idU}/${nivel}/${acierto}/${error}/${idP}/${modo}`).subscribe(
+    this.http.get(`${this.apiURL}/questions/read/resp/${idU}/${nivel}/${acierto}/${error}/${idP}/${modo}`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
+  updateLeer(id,callback){
+    this.http.get<any>(`${this.apiURL}/questions/read/${id}`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
+  updateWrite(id,callback){
+    this.http.get<any>(`${this.apiURL}/questions/write/${id}`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
+  updateComp(id,callback){
+    this.http.get<any>(`${this.apiURL}/questions/comp/${id}`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
+  falseLeer(callback){
+    this.http.get<any>(`${this.apiURL}/false/read/`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
+  falseWrite(callback){
+    this.http.get<any>(`${this.apiURL}/false/write/`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
+  falseComp(callback){
+    this.http.get<any>(`${this.apiURL}/false/comp/`).subscribe(
       (data)=>{
         callback(data);
       },
