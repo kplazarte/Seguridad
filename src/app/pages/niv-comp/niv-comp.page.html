@@ -26,11 +26,12 @@
     </div>
     <br>
     <br>
-    <audio controls>
-      <source src="../../assets/QComprension/audio/Hipo.aac" type="audio/mpeg">
-      <!-- <source [src]="audio" type="audio/mpeg"> -->
-    </audio>
+    <div *ngIf="audioURL != undefined">
 
+        <audio controls>
+            <source [src]=audioURL type="audio/mpeg">
+          </audio>
+    </div>
     <br>
     <br>
     <div id="uno">
