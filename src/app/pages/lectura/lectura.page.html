@@ -12,7 +12,7 @@
 
             <ion-item *ngFor="let levels of list">
 
-                <ion-label size="small" (click)="openIonModal(levels.id)">{{levels.title}}</ion-label>
+                <ion-label size="small" (click)="openIonModal(levels.id_nivel)">{{levels.title}}</ion-label>
                 <div>
                     <circle-progress [percent]=getProgress(levels.id) [radius]="38" [outerStrokeWidth]="8" [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"></circle-progress>
                 </div>

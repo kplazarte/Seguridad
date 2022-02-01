@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { AlertController } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LevelCapLogger } from '@angular-devkit/core/src/logger';
 
 @Component({
@@ -19,7 +19,7 @@ export class ListaNiveles2Page implements OnInit {
 
   constructor(public dataservice: DataService,
     public alertController: AlertController,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
     this.id_modo = this.route.snapshot.paramMap.get('id');
@@ -46,15 +46,13 @@ export class ListaNiveles2Page implements OnInit {
 
 
   getProgress(name){
-      const resultado = this.list2.find( level => level.title === name );
-      if(resultado.title == 'Nivel 1'){
-        this.progress = ((resultado.aciertos + resultado.fallos)/10)*100;
-      }else{
-        this.progress = ((resultado.fallos + resultado.aciertos)/10)*100;
-      }
-
-      //this.progress = ((resultado.aciertos + resultado.fallos)/10)*100;
+    const resultado = this.list2.find( level => level.title === name );
+    const aciertos = Number(resultado.aciertos);
+    const fallos = Number(resultado.fallos);
+    this.progress = ((aciertos + fallos)/10)*100;
+    //console.log(this.progress);
     return this.progress;
+
   }
 
   async presentAlertButtons() {
@@ -66,6 +64,14 @@ export class ListaNiveles2Page implements OnInit {
     });
 
     await alert.present();
+  }
+
+  reloadCurrentRoute() {
+    let currentUrl = '/inicio';
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+        console.log(currentUrl);
+    });
   }
 
 }

@@ -2,14 +2,14 @@
     <ion-toolbar>
         <ion-title style="text-align: center;">Escribir</ion-title>
         <ion-buttons slot="start">
-            <ion-back-button (click)="reloadCurrentRoute()"></ion-back-button>
+            <ion-back-button></ion-back-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
     <div style="padding: 10px; float: left; width: 45%; text-align: center;">
-        <img routerLink="/menu-jugar" src="../../assets/imagenes/escribir.png" width="60%" alt="">
+        <img src="../../assets/imagenes/escribir.png" width="60%" alt="">
     </div>
     <div style="padding: 10px; float: right; width: 45%; text-align: left;">
         <h3>
@@ -32,6 +32,5 @@
         <ion-input id="value_write"></ion-input>
 
     </ion-item>
-
     <ion-button (click)="presentAlert()" style="margin-left: 90px;">Comprobar</ion-button>
 </ion-content>

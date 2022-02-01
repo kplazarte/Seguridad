@@ -15,10 +15,13 @@
 
             <ion-item *ngFor="let levels of list">
 
-                <ion-label size="small">{{levels.title}}</ion-label>
-                <div>
-                    <circle-progress [percent]=getProgress(levels.id) [radius]="38" [outerStrokeWidth]="8" [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"></circle-progress>
-                </div>
+                <div *ngIf="getProgress(levels.id)>0; then op1"></div>
+                <ng-template #op1>
+                    <ion-label size="small" [routerLink]="['/repasar-comp',levels.id_nivel]">{{levels.title}}</ion-label>
+                    <div>
+                        <circle-progress [percent]=getProgress(levels.id) [radius]="38" [outerStrokeWidth]="8" [innerStrokeWidth]="3" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="300"></circle-progress>
+                    </div>
+                </ng-template>
             </ion-item>
         </ion-list>
 

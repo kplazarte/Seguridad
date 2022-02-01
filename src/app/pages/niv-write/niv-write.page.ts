@@ -24,12 +24,15 @@ export class NivWritePage implements OnInit {
   async presentAlert() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      message: 'CORRECTO FELICITACIONES',
+      header:`FELICITACIONES`,
+      subHeader:'Respondiste Correcto',
+      message: `<img src="../../../assets/imagenes/minions.gif" alt="g-maps" width="25%">`,
       buttons: ['Aceptar']
     });
     const alert2 = await this.alertController.create({
       cssClass: 'my-custom-class',
-      message: 'INCORRECTO SIGUE INTENTANDO',
+      header:`¡LO SIENTO! `,
+      message: `<h4> La respuestas podían ser <b> ${this.answer} </b> o <b>${this.answer2}</b></h4>`,
       buttons: ['Aceptar']
     });
 
@@ -38,11 +41,13 @@ export class NivWritePage implements OnInit {
     console.log("Value: ",value_write_one);
 
     if (value_write_one.toUpperCase() == this.answer.toUpperCase() || value_write_one.toUpperCase() == this.answer2.toUpperCase()) {
-      await alert.present();
       this.respCorrecta(this.id_user,this.id,1,0,this.id_pregunta,2);
+      await alert.present();
+
     } else {
-      await alert2.present();
       this.respCorrecta(this.id_user,this.id,0,1,this.id_pregunta,2);
+      await alert2.present();
+
     }
      // CLEAR INPUT VALUE
      (document.getElementById("value_write") as HTMLInputElement).value = "";
@@ -63,31 +68,51 @@ export class NivWritePage implements OnInit {
         this.answer2 = this.list[0].answer2;
       } else {
         this.presentAlert2();
-        this.router.navigate(['/lista-niveles']);
+        const nl = Number(this.id) +1;
+        this.insertCorrecta(this.id_user,nl,0,0,999,2);
+        this.reloadCurrentRoute();
+        //this.router.navigate(['/lista-niveles2']);
       }
 
 
     });
   }
 
-  
+
   respCorrecta(idU,nivel,acierto,error,idP,modo){
     this.dataservice.respuestaContestada(idU,nivel,acierto,error,idP,modo,(status)=>{
       console.log(status);
       this.ngOnInit();
     });
-    
+
+  }
+
+  insertCorrecta(idU,nivel,acierto,error,idP,modo){
+
+    this.dataservice.respuestaContestada(idU,nivel,acierto,error,idP,modo,(status)=>{
+      console.log(status);
+      //this.ngOnInit();
+    });
+
   }
 
   async presentAlert2() {
     const alert2 = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: '',
-      message: 'Todas las preguntas ya fueron respondidas',
+      header: 'Todas las preguntas de este nivel ya fueron respondidas',
+      message: `<img src="../../../assets/imagenes/trofeo.gif" alt="g-maps" width="25%">`,
       buttons: ['OK']
     });
 
     await alert2.present();
+  }
+
+  reloadCurrentRoute() {
+    let currentUrl = '/lista-niveles2';
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+        console.log(currentUrl);
+    });
   }
 
 }

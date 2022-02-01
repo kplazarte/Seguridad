@@ -29,8 +29,10 @@ export class NivRepasarPage implements OnInit {
 
   getProgress(id){
     const resultado = this.list.find( level => level.id === id );
-    this.progress = ((resultado.fallos+resultado.aciertos)/10)*100;
-    //this.progress = ((resultado.fallos+resultado.aciertos));
+    const aciertos = Number(resultado.aciertos);
+    const fallos = Number(resultado.fallos);
+    this.progress = ((aciertos + fallos)/10)*100;
+    //console.log(this.progress);
     return this.progress;
   }
 

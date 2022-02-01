@@ -19,11 +19,14 @@ export class ConexionService {
 
   createUser(user){
     const body = new HttpParams({fromObject: user});
-    this.http.post('https://api-edusmart.herokuapp.com/users',body.toString(),this.httpOptions).toPromise().then(msg=>console.log(msg));
+    // this.http.post('https://api-edusmart.herokuapp.com/users',body.toString(),this.httpOptions).toPromise().then(msg=>console.log(msg));
+    this.http.post('http://localhost:3000/users',body.toString(),this.httpOptions).toPromise().then(msg=>console.log(msg));
   }
 
   obtenerDatos(){
-    return this.http.get('https://api-edusmart.herokuapp.com/users');
+    //return this.http.get('https://api-edusmart.herokuapp.com/users');
+    return this.http.get('http://localhost:3000/users');
+
   }
 
   getUsers(usuario,callback){

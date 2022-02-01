@@ -106,7 +106,32 @@ const routes: Routes = [
   {
     path: 'lista-niveles3',
     loadChildren: () => import('./pages/lista-niveles3/lista-niveles3.module').then( m => m.ListaNiveles3PageModule)
+  },
+  {
+    path: 'repasar-lec',
+    loadChildren: () => import('./pages/repasar-lec/repasar-lec.module').then( m => m.RepasarLecPageModule)
+  },
+  {
+    path: 'repasar-lec/:id',
+    loadChildren: () => import('./pages/repasar-lec/repasar-lec.module').then( m => m.RepasarLecPageModule)
+  },
+  {
+    path: 'repasar-write',
+    loadChildren: () => import('./pages/repasar-write/repasar-write.module').then( m => m.RepasarWritePageModule)
+  },
+  {
+    path: 'repasar-write/:id',
+    loadChildren: () => import('./pages/repasar-write/repasar-write.module').then( m => m.RepasarWritePageModule)
+  },
+  {
+    path: 'repasar-comp',
+    loadChildren: () => import('./pages/repasar-comp/repasar-comp.module').then( m => m.RepasarCompPageModule)
+  },
+  {
+    path: 'repasar-comp/:id',
+    loadChildren: () => import('./pages/repasar-comp/repasar-comp.module').then( m => m.RepasarCompPageModule)
   }
+
 
 
 

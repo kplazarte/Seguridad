@@ -62,9 +62,29 @@ export class DataService {
     );
   }
 
-  getAnsweredLevelList(id,nivel,callback){
+  getAnsweredReadList(id,nivel,callback){
 
     this.http.get(`http://localhost:3000/answered/read/${id}/${nivel}`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
+  getAnsweredWriteList(id,nivel,callback){
+
+    this.http.get(`http://localhost:3000/answered/write/${id}/${nivel}`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
+  getAnsweredCompList(id,nivel,callback){
+
+    this.http.get(`http://localhost:3000/answered/comp/${id}/${nivel}`).subscribe(
       (data)=>{
         callback(data);
       },

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
@@ -14,6 +14,7 @@ export class ListaNivelesPage implements OnInit {
   public progress:number;
   public iniciado: Array<any>=[];
   public id_modo:any;
+  idUser:any
   asd:any;
 
   constructor(public dataservice: DataService,
@@ -21,6 +22,7 @@ export class ListaNivelesPage implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
+    //this.refresh();
     this.id_modo = this.route.snapshot.paramMap.get('id');
     this.id_modo = Number(this.id_modo);
     this.dataservice.obtenerUsuarioLogeado();
@@ -34,7 +36,6 @@ export class ListaNivelesPage implements OnInit {
         this.iniciado.unshift(this.list2[i].title);
       }
 
-
     });
 
   }
@@ -47,10 +48,12 @@ export class ListaNivelesPage implements OnInit {
   getProgress(name){
     //console.log(name);
       const resultado = this.list2.find( level => level.title === name );
-      this.progress = (( resultado.fallos+resultado.aciertos )/10)*100;
-      //console.log(this.progress);
-      /* this.progress = ((resultado.aciertos + resultado.fallos)/10)*100; */
-    return this.progress;
+      const aciertos = Number(resultado.aciertos);
+      const fallos = Number(resultado.fallos);
+      this.progress = ((aciertos + fallos)/10)*100;
+      this.idUser = this.dataservice.usuarioLoged.id_usuario;;
+      return this.progress;
+
   }
 
   async presentAlertButtons() {

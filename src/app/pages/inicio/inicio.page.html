@@ -10,7 +10,15 @@
 <ion-content>
 
     <div class="ion-text-center">
-        <h1>Hola {{dataservice.usuarioLoged.nombre_hijo}}</h1>
+        <ion-item>
+            <ion-avatar slot="start" (click)="presentAlert2()">
+                <img src="../../../assets/imagenes/avatar.png">
+            </ion-avatar>
+            <ion-label> &nbsp;&nbsp;&nbsp; <img src="../../../assets/imagenes/points.png" alt="" width="20%"> {{totalaciertos}} puntos
+                <ion-icon name="information-circle-outline" (click)="presentAlert3()"></ion-icon>
+            </ion-label>
+        </ion-item>
+
         <br>
         <img routerLink="/menu-jugar" src="../../assets/imagenes/jugar.png" width="50%" alt="">
         <h6>Jugar</h6>
