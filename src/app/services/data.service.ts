@@ -6,8 +6,8 @@ import {HttpClient,HttpHeaders,HttpParams} from '@angular/common/http';
 export class DataService {
 
   usuarioLoged: any;
-  //apiURL:string = "http://localhost:3000";
-  apiURL:string ="https://api-edusmart.herokuapp.com"
+  apiURL:string = "http://localhost:3000";
+  //apiURL:string ="https://api-edusmart.herokuapp.com"
 
   constructor(public http: HttpClient) {
   }
