@@ -66,12 +66,4 @@ export class ListaNiveles2Page implements OnInit {
     await alert.present();
   }
 
-  reloadCurrentRoute() {
-    let currentUrl = '/inicio';
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-        this.router.navigate([currentUrl]);
-        console.log(currentUrl);
-    });
-  }
-
 }

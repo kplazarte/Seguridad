@@ -11,6 +11,8 @@ export class ConexionService {
 
   usuarios: any;
   public productoEncontrado;
+    //apiURL:string = "http://localhost:3000";
+    apiURL:string ="https://api-edusmart.herokuapp.com"
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
   };
@@ -19,13 +21,11 @@ export class ConexionService {
 
   createUser(user){
     const body = new HttpParams({fromObject: user});
-    // this.http.post('https://api-edusmart.herokuapp.com/users',body.toString(),this.httpOptions).toPromise().then(msg=>console.log(msg));
-    this.http.post('http://localhost:3000/users',body.toString(),this.httpOptions).toPromise().then(msg=>console.log(msg));
+    this.http.post(`${this.apiURL}/users`,body.toString(),this.httpOptions).toPromise().then(msg=>console.log(msg));
   }
 
   obtenerDatos(){
-    //return this.http.get('https://api-edusmart.herokuapp.com/users');
-    return this.http.get('http://localhost:3000/users');
+    return this.http.get(`${this.apiURL}/users`);
 
   }
 

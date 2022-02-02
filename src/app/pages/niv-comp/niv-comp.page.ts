@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 
+
 @Component({
   selector: 'app-niv-comp',
   templateUrl: './niv-comp.page.html',
@@ -12,7 +13,8 @@ export class NivCompPage implements OnInit {
 
   id:any;
   public list: Array<any>;
-  audio: string;
+  audioURL: any;
+  audio:any;
   img1: string;
   img2:string;
   img3: string;
@@ -89,13 +91,15 @@ export class NivCompPage implements OnInit {
   }
 
   ngOnInit() {
+    this.audioURL=undefined;
     this.id = this.route.snapshot.paramMap.get('id');
     this.idUser = this.dataservice.usuarioLoged.id_usuario;
     this.dataservice.getCompLevelList(this.idUser,this.id,(status)=>{
       console.log(status);
       this.list = status;
     if (this.list[0]!=undefined) {
-      this.audio = this.list[0].audio;
+      this.audioURL = this.list[0].audio;
+      console.log(this.audioURL);
       this.id_pregunta = this.list[0].id_pregunta;
       this.img1 = this.list[0].op1;
       this.img2 = this.list[0].op2;
@@ -112,6 +116,7 @@ export class NivCompPage implements OnInit {
         this.imgresp = this.img4;
       }
       //console.log(this.audio);
+   
     }else{
       this.presentAlert2();
       const nl = Number(this.id) +1;
@@ -127,6 +132,7 @@ export class NivCompPage implements OnInit {
 
     this.dataservice.respuestaContestada(idU,nivel,acierto,error,idP,modo,(status)=>{
       console.log(status);
+      
       this.ngOnInit();
     });
 
