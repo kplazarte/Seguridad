@@ -9,10 +9,20 @@ import { ModalController } from '@ionic/angular';
 export class ModalHighscorePage implements OnInit {
 
   @Input() lista:Array<any>;
+  @Input() idUser:number;
+  lugares:Array<any> = [];
 
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {
+    for(let i=0;i<this.lista.length;i++){
+      this.lugares.push(this.lista[i].id_usuario);
+    }
+    console.log(this.idUser);
+  }
+  posLista(id){
+    const lugar = this.lugares.indexOf(id);
+    return lugar+1;
   }
 
   async closeModel() {

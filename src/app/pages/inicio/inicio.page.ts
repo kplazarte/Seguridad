@@ -4,6 +4,8 @@ import { Storage } from '@ionic/storage-angular';
 import { DataService } from '../../services/data.service';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { ModalHighscorePage } from '../../componentes/modal-highscore/modal-highscore.page';
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
@@ -12,50 +14,36 @@ import { Router } from '@angular/router';
 export class InicioPage implements OnInit {
 
   usuario: any;
+  modelData: any;
   nombre:string;
   public list: Array<any>;
   public list2: Array<any>;
   public list3: Array<any>;
-  aclec:number = 0;
-  acesc:number = 0;
-  accom:number = 0;
+  public userScore: Array<any>;
+  public scores: Array<any>;
+  public lugares: Array<any> =[];
+  public idUser:number;
+  puntaje:number;
   totalaciertos:number;
   constructor(private menu: MenuController,private storage: Storage,public dataservice: DataService,
-    public alertController: AlertController,private router: Router) { }
+    public alertController: AlertController,private router: Router,public modalController: ModalController) { }
 
   ngOnInit() {
 
     this.dataservice.obtenerUsuarioLogeado();
-    const id = this.dataservice.usuarioLoged.id_usuario;
-    //console.log("id User" ,id);
-    this.dataservice.getProgresoByModo(id,1,(status)=>{
-      this.list = status;
-      for (let i = 0; i < this.list.length; i++) {
-        const acierto = Number(this.list[i].aciertos);
-        this.aclec+=acierto;
-      }
-
-    });
-    this.dataservice.getProgresoByModo(id,2,(status2)=>{
-      this.list2 = status2;
-      for (let i = 0; i < this.list2.length; i++) {
-        const acierto = Number(this.list2[i].aciertos);
-        this.acesc+=acierto;
-      }
-      //console.log(this.acesc);
-
+    this.idUser = this.dataservice.usuarioLoged.id_usuario;
+    this.dataservice.userScore((status)=>{
+      this.scores = status;
     });
 
-    this.dataservice.getProgresoByModo(id,3,(status3)=>{
-      this.list3 = status3;
-      for (let i = 0; i < this.list3.length; i++) {
-        const acierto = Number(this.list3[i].aciertos);
-        this.accom+=acierto;
-
+    this.dataservice.userScoreById(this.idUser,(status)=>{
+      this.userScore = status;
+      if(this.userScore.length>0){
+        const aciertos = this.userScore[0].taciertos;
+        this.puntaje = aciertos*5;
+      }else{
+        this.puntaje = 0;
       }
-      this.totalaciertos = (this.aclec+this.acesc+this.accom)*5;
-      //console.log(this.totalaciertos);
-
 
     });
 
@@ -106,7 +94,7 @@ export class InicioPage implements OnInit {
   async presentAlert3() {
     const alert2 = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: `Tienes ${this.totalaciertos} puntos`,
+      header: `Tienes ${this.puntaje} puntos`,
       message: `
       <ul>
       <li><h4> Ganas 5 puntos por cada pregunta contestada correctamente </h4></li>
@@ -117,6 +105,26 @@ export class InicioPage implements OnInit {
 
     await alert2.present();
 
+  }
+
+
+  async openIonModal() {
+
+    const modal = await this.modalController.create({
+      component: ModalHighscorePage,
+      cssClass: 'my-custom-class',
+      componentProps:{
+        lista: this.scores,
+        idUser: this.idUser
+      }
+    });
+    modal.onDidDismiss().then((modelData)=>{
+      if (modelData !== null) {
+
+        this.modelData = modelData.data;
+      }
+    });
+    return await modal.present();
 
   }
 

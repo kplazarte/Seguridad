@@ -12,7 +12,8 @@ export class RepasarCompPage implements OnInit {
 
   id:any;
   public list: Array<any>;
-  audio: string;
+  audioURL: any;
+  audio:any;
   img1: string;
   img2:string;
   img3: string;
@@ -89,13 +90,14 @@ export class RepasarCompPage implements OnInit {
   }
 
   ngOnInit() {
+    this.audioURL=undefined;
     this.id = this.route.snapshot.paramMap.get('id');
     this.idUser = this.dataservice.usuarioLoged.id_usuario;
     this.dataservice.getAnsweredCompList(this.idUser,this.id,(status)=>{
       console.log(status);
       this.list = status;
     if (this.list[0]!=undefined) {
-      this.audio = this.list[0].audio;
+      this.audioURL = this.list[0].audio;
       this.id_pregunta = this.list[0].id_pregunta;
       this.img1 = this.list[0].op1;
       this.img2 = this.list[0].op2;

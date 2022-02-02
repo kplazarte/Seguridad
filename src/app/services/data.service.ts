@@ -157,4 +157,22 @@ export class DataService {
     );
   }
 
+  userScore(callback){
+    this.http.get<any>(`${this.apiURL}/aciertos/`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
+  userScoreById(id,callback){
+    this.http.get<any>(`${this.apiURL}/aciertos/${id}`).subscribe(
+      (data)=>{
+        callback(data);
+      },
+      (error)=>console.log(error.message)
+    );
+  }
+
 }
