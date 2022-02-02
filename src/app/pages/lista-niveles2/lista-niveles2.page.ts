@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LevelCapLogger } from '@angular-devkit/core/src/logger';
+
 
 @Component({
   selector: 'app-lista-niveles2',

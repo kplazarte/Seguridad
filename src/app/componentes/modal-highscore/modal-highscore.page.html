@@ -1,9 +1,15 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>modal-highscore</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title> Resultados Globales </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+    <ion-list>
+        <ion-item *ngFor="let users of lista">
+            <!-- <div *ngIf="getProgress(levels.id)>0; then thenBlock else elseBlock"></div> -->
+            <ion-label size="small">{{users.nombre_usuario}}</ion-label>
+        </ion-item>
+    </ion-list>
 
 </ion-content>
