@@ -121,8 +121,11 @@ export class NivLeerPage implements OnInit {
       }
       }else{
         this.presentAlert2();
-        const nl = Number(this.id) +1;
-        this.insertCorrecta(this.idUser,nl,0,0,999,1);
+        if(this.id<5){
+          const nl = Number(this.id) +1;
+          this.insertCorrecta(this.idUser,nl,0,0,999,1);
+
+        }
         this.reloadCurrentRoute();
       }
     });

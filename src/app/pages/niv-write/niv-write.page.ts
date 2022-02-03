@@ -68,8 +68,11 @@ export class NivWritePage implements OnInit {
         this.answer2 = this.list[0].answer2;
       } else {
         this.presentAlert2();
-        const nl = Number(this.id) +1;
-        this.insertCorrecta(this.id_user,nl,0,0,999,2);
+        if(this.id<5){
+          const nl = Number(this.id) +1;
+          this.insertCorrecta(this.id_user,nl,0,0,999,2);
+
+        }
         this.reloadCurrentRoute();
         //this.router.navigate(['/lista-niveles2']);
       }

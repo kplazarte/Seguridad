@@ -116,11 +116,14 @@ export class NivCompPage implements OnInit {
         this.imgresp = this.img4;
       }
       //console.log(this.audio);
-   
+
     }else{
       this.presentAlert2();
-      const nl = Number(this.id) +1;
-      this.insertCorrecta(this.idUser,nl,0,0,999,3);
+      if(this.id<5){
+        const nl = Number(this.id) +1;
+        this.insertCorrecta(this.idUser,nl,0,0,999,3);
+
+      }
       this.reloadCurrentRoute();
       //this.router.navigate(['/lista-niveles3/']);
     }
@@ -132,7 +135,7 @@ export class NivCompPage implements OnInit {
 
     this.dataservice.respuestaContestada(idU,nivel,acierto,error,idP,modo,(status)=>{
       console.log(status);
-      
+
       this.ngOnInit();
     });
 
