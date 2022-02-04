@@ -2,57 +2,85 @@
     <ion-toolbar>
         <ion-title style="text-align: center;">Comprender</ion-title>
         <ion-buttons slot="start">
-            <ion-back-button (click)="transformar()"></ion-back-button>
+            <ion-back-button (click)="reloadCurrentRoute()"></ion-back-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <div style="padding: 10px; float: left; width: 45%; text-align: center;">
-        <img routerLink="/menu-jugar" src="../../assets/imagenes/ear.png" width="60%" alt="">
-    </div>
-    <div style="padding: 10px; float: right; width: 45%; text-align: left;">
-        <h3>
-            Nivel {{id}}
-        </h3>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div style="text-align: center;">
-        <div style="text-align: center;"> ¿ A QUÉ IMAGEN CORRESPONDE ? </div>
-    </div>
-    <br>
-    <br>
-    <div *ngIf="audioURL != undefined">
-        <audio controls>
-      <source [src]=audioURL type="audio/mpeg">
-    </audio>
-    </div>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="1">
 
-    <br>
-    <br>
-    <div id="uno">
-        <img style="margin-top: 20px;" [src]=img1 width="100%" alt="">
-        <input (click)="getValueInput()" type="radio" id="img_read1" name="drone" value="1">
-    </div>
-    <div id="dos">
-        <img style="margin-top: 20px;" [src]=img2 width="122px" height="126px" alt="">
-        <input (click)="getValueInput2()" type="radio" id="img_read2" name="drone" value="2">
-    </div>
-    <br>
-    <div id="tres">
-        <img style="margin-top: 20px;" [src]=img3 width="122px" height="126px" alt="">
-        <input (click)="getValueInput3()" type="radio" id="img_read3" name="drone" value="3">
-    </div>
-    <div id="cuatro">
-        <img style="margin-top: 20px;" [src]=img4 width="122px" height="126px" alt="">
-        <input (click)="getValueInput4()" type="radio" id="img_read4" name="drone" value="4">
-    </div>
-    <br>
-    <br>
-    <br>
-    <ion-button (click)="presentAlert()" style="margin-left: 70px;">Comprobar</ion-button>
+            </ion-col>
+            <ion-col size="3" style="text-align: center;">
+                <img routerLink="/menu-jugar" src="../../assets/imagenes/ear.png" alt="">
+            </ion-col>
+            <ion-col size="6" style="text-align: left;">
+                <h3 style="text-align: center;">
+                    Nivel {{id}}
+                </h3>
+            </ion-col>
+            <ion-col size="2">
+
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>
+                <div style="text-align: center;">
+                    <div style="text-align: center;">¿A QUÉ IMAGEN CORRESPONDE?</div>
+                </div>
+                <br>
+                <div *ngIf="audioURL != undefined">
+                    <audio controls>
+                    <source [src]=audioURL type="audio/mpeg">
+                  </audio>
+                </div>
+            </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="6">
+                        <div id="uno">
+                            <img [src]=img1 alt="">
+                            <input (click)="getValueInput()" type="radio" id="img_read1" name="drone" value="1">
+                        </div>
+                    </ion-col>
+                    <ion-col size="6">
+                        <div id="dos">
+                            <img [src]=img2 alt="">
+                            <input (click)="getValueInput2()" type="radio" id="img_read2" name="drone" value="2">
+                        </div>
+                    </ion-col>
+                    <ion-col size="6">
+                        <div id="tres">
+                            <img [src]=img3 alt="">
+                            <input (click)="getValueInput3()" type="radio" id="img_read3" name="drone" value="3">
+                        </div>
+                    </ion-col>
+                    <ion-col size="6">
+                        <div id="cuatro">
+                            <img [src]=img4 alt="">
+                            <input (click)="getValueInput4()" type="radio" id="img_read4" name="drone" value="4">
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size="4" style="text-align: center;">
+            </ion-col>
+            <ion-col size="4" style="text-align: center;">
+                <button type="button" (click)="presentAlert()"><img src="../../assets/icon/visto.png" alt=""></button>
+            </ion-col>
+            <ion-col size="4" style="text-align: center;">
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
